@@ -53,9 +53,19 @@ struct gpio_dev {
 	uint16_t reserved3;
 };
 
+
 /*
  * define hardware aliases
  */
+
+/// GPIO addresses
+#define GPIO_BASE 0x48000000
+#define GPIOA ((struct stm_gpio_dev *) (GPIO_BASE + 0x0000))
+#define GPIOB ((struct stm_gpio_dev *) (GPIO_BASE + 0x0400))
+#define GPIOC ((struct stm_gpio_dev *) (GPIO_BASE + 0x0800))
+#define GPIOD ((struct stm_gpio_dev *) (GPIO_BASE + 0x0C00))
+#define GPIOE ((struct stm_gpio_dev *) (GPIO_BASE + 0x1000))
+#define GPIOF ((struct stm_gpio_dev *) (GPIO_BASE + 0x1400))
 
 
 /*
@@ -63,4 +73,6 @@ struct gpio_dev {
  */
 
 void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_tpull, uint32_t speed); 
+void stm_gpio_af(struct stm_gpio_dev *dev, uint32_t af); 
+
 #endif
