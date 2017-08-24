@@ -6,7 +6,7 @@
  */
 
 /// device struct for GPIO hardware
-struct gpio_dev {
+struct stm_gpio_dev {
 	/// 0x00 : mode register
 	uint32_t mode;
 
@@ -44,7 +44,7 @@ struct gpio_dev {
 	uint32_t afl;
 
 	/// 0x24 : alternate function high register
-	uint32_t afh:
+	uint32_t afh;
 
 	/// 0x28 : bit reset register
 	uint16_t br;
@@ -72,7 +72,7 @@ struct gpio_dev {
  * define interface functions
  */
 
-void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_tpull, uint32_t speed); 
+void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_t pull, uint32_t speed); 
 void stm_gpio_af(struct stm_gpio_dev *dev, uint32_t af); 
 
 #endif
