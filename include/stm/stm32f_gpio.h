@@ -8,49 +8,46 @@
 /// device struct for GPIO hardware
 struct stm_gpio_dev {
 	/// 0x00 : mode register
-	uint32_t mode;
+	uint32_t MODER;
 
 	/// 0x04 : output type register
-	uint16_t type;
-
-	/// 0x06 : reserved
-	uint16_t reserved0;
+	uint32_t TYPER;
 
 	/// 0x08 : output speed register
-	uint32_t speed;
+	uint32_t OSPEEDR;
 
 	/// 0x0c : pull-up/pull-down register
-	uint32_t pupd;
+	uint32_t PUPDR;
 
 	/// 0x10 : input data register
-	uint16_t in;
+	uint16_t IDR;
 
 	/// 0x12 : reserved
-	uint16_t reserved1;
+	uint16_t RESERVED0;
 
 	/// 0x14 : output data register
-	uint16_t out;
+	uint16_t ODR;
 
 	/// 0x16 : reserved
-	uint16_t reserved2;
+	uint16_t RESERVED1;
 
 	/// 0x18 : bit set/reset register
-	uint32_t bsr;
+	uint32_t BSRR;
 
 	/// 0x1c : configuration lock register
-	uint32_t lock;
+	uint32_t LCKR;
 
 	/// 0x20 : alternate function low register
-	uint32_t afl;
+	uint32_t AFRL;
 
 	/// 0x24 : alternate function high register
-	uint32_t afh;
+	uint32_t AFRH;
 
 	/// 0x28 : bit reset register
-	uint16_t br;
+	uint16_t BRR;
 
 	/// 0x2a : reserved
-	uint16_t reserved3;
+	uint16_t RESERVED2;
 };
 
 

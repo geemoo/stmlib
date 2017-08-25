@@ -13,20 +13,20 @@
  */
 
 struct stm_rcc_dev {
-	uint32_t cr;
-	uint32_t cfgr;
-	uint32_t cir;
-	uint32_t apb2rstr;
-	uint32_t apb1rstr;
-	uint32_t ahbenr;
-	uint32_t apb2enr;
-	uint32_t apb1enr;
-	uint32_t bdcr;
-	uint32_t csr;
-	uint32_t ahbrstr;
-	uint32_t cfgr2;
-	uint32_t cfgr3;
-	uint32_t cr2;
+	uint32_t CR;
+	uint32_t CFGR;
+	uint32_t CIR;
+	uint32_t APB2RSTR;
+	uint32_t APB1RSTR;
+	uint32_t AHBENR;
+	uint32_t APB2ENR;
+	uint32_t APB1ENR;
+	uint32_t BDCR;
+	uint32_t CSR;
+	uint32_t AHBRSTR;
+	uint32_t CFGR2;
+	uint32_t CFGR3;
+	uint32_t CR2;
 };
 
 
