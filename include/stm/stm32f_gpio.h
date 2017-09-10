@@ -2,6 +2,31 @@
 #define __STM32F_GPIO_H__
 
 /*
+ * define constants
+ */
+
+/// mode
+#define GPIO_INPUT 0x00
+#define GPIO_OUTPUT 0x01
+#define GPIO_AF 0x02
+#define GPIO_ANALOG 0x03
+
+/// output types
+#define GPIO_PUSHPULL 0x00
+#define GPIO_OPENDRAIN 0x01
+
+/// pullup/pulldown values
+#define GPIO_NOPULL 0x00
+#define GPIO_PULLUP 0x01
+#define GPIO_PULLDOWN 0x02
+
+/// output speed
+#define GPIO_LOWSPEED 0x0
+#define GPIO_MEDSPEED 0x1
+#define GPIO_HIGHSPEED 0x3
+
+
+/*
  * define structs
  */
 
@@ -69,7 +94,7 @@ struct stm_gpio_dev {
  * define interface functions
  */
 
-void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_t pull, uint32_t speed); 
+void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_t type, uint32_t pull, uint32_t speed); 
 void stm_gpio_af(struct stm_gpio_dev *dev, uint32_t af); 
 
 #endif
