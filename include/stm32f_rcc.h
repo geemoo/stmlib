@@ -25,6 +25,8 @@
 #define RCC_GPIOD ((1 << 30) | (1 << 29) | (1 << 4))
 #define RCC_GPIOE ((1 << 30) | (1 << 29) | (1 << 5))
 #define RCC_GPIOF ((1 << 30) | (1 << 29) | (1 << 6))
+#define RCC_SPI1 ((2 << 30) | (0 << 29) | (1 << 12))
+#define RCC_SPI2 ((3 << 30) | (0 << 29) | (1 << 14))
 
 /// RCC->CR
 #define BP_CR_HSION 0
@@ -96,27 +98,27 @@
  */
 
 struct stm_rcc_dev {
-	uint32_t CR;
-	uint32_t CFGR;
-	uint32_t CIR;
-	uint32_t APB2RSTR;
-	uint32_t APB1RSTR;
-	uint32_t AHBENR;
-	uint32_t APB2ENR;
-	uint32_t APB1ENR;
-	uint32_t BDCR;
-	uint32_t CSR;
-	uint32_t AHBRSTR;
-	uint32_t CFGR2;
-	uint32_t CFGR3;
-	uint32_t CR2;
+	uint32_t CR; // 0x00
+	uint32_t CFGR; // 0x04
+	uint32_t CIR; // 0x08
+	uint32_t APB2RSTR; // 0x0c
+	uint32_t APB1RSTR; // 0x10
+	uint32_t AHBENR; // 0x14
+	uint32_t APB2ENR; // 0x18
+	uint32_t APB1ENR; // 0x1c
+	uint32_t BDCR; // 0x20
+	uint32_t CSR; // 0x24
+	uint32_t AHBRSTR; // 0x28
+	uint32_t CFGR2; // 0x2c
+	uint32_t CFGR3; // 0x30
+	uint32_t CR2; // 0x34
 };
 
 
 /*
  * define hardware aliases
  */
-#define RCC ((struct stm_rcc_dev *) (0x40021000))
+#define RCC ((struct stm_rcc_dev *) 0x40021000)
 
 
 /* 

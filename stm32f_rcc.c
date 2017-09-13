@@ -9,7 +9,8 @@
  */
 void stm_rcc_enable(uint32_t clock, uint32_t state)
 {
-	uint32_t *reg;
+	uint32_t val;
+	uint32_t reg;
 
 	/*
 	 * The clock variable is a constant which comprises a bit field containing the following bits:
@@ -24,24 +25,35 @@ void stm_rcc_enable(uint32_t clock, uint32_t state)
 	 * - [15:0] - the bit positions we are toggling
 	 */
 
-	// determine which register to toggle
-	if (clock & (1 << 30))
-		reg = &RCC->AHBENR;
-	else if (clock & (2 << 30))
-		reg = &RCC->APB2ENR;
-	else if (clock & (3 << 30))
-		reg = &RCC->APB1ENR;
-
-	// determine upper or lower bits (we'll just reuse clock)
+	// determine value to mask in.. is it in the upper or lower bits
 	if (clock & (1 << 29))
-		clock = (clock & 0x0000ffff) << 16;
+		val = (clock & 0x0000ffff) << 16;
 	else
-		clock = (clock & 0x0000ffff) << 0;
+		val = (clock & 0x0000ffff) << 0;
 
-	// toggle bits according to state
-	if (state)
-		*reg = *reg | clock;
-	else
-		*reg = *reg & ~clock;
+	// determine which register to toggle
+	reg = (clock >> 30) & 0x00000003;
+
+	// now adjust the register, depending on state
+	if (state) {
+		if (reg == 1)
+			RCC->AHBENR |= val;
+
+		else if (reg == 2)
+			RCC->APB2ENR |= val;
+
+		else if (reg == 3)
+			RCC->APB1ENR |= val;
+	
+	} else {
+		if (reg == 1)
+			RCC->AHBENR &= ~val;
+
+		else if (reg == 2)
+			RCC->APB2ENR &= ~val;
+
+		else if (reg == 3)
+			RCC->APB1ENR &= ~val;
+	}
 }
 

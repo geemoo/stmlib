@@ -25,6 +25,9 @@
 #define GPIO_MEDSPEED 0x1
 #define GPIO_HIGHSPEED 0x3
 
+/// alternate function numbers
+#define GPIO_AF_SPI 0
+
 
 /*
  * define structs
@@ -82,19 +85,19 @@ struct stm_gpio_dev {
 
 /// GPIO addresses
 #define GPIO_BASE 0x48000000
-#define GPIOA ((struct stm_gpio_dev *) (GPIO_BASE + 0x0000))
-#define GPIOB ((struct stm_gpio_dev *) (GPIO_BASE + 0x0400))
-#define GPIOC ((struct stm_gpio_dev *) (GPIO_BASE + 0x0800))
-#define GPIOD ((struct stm_gpio_dev *) (GPIO_BASE + 0x0C00))
-#define GPIOE ((struct stm_gpio_dev *) (GPIO_BASE + 0x1000))
-#define GPIOF ((struct stm_gpio_dev *) (GPIO_BASE + 0x1400))
+#define GPIOA ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x0000))
+#define GPIOB ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x0400))
+#define GPIOC ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x0800))
+#define GPIOD ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x0C00))
+#define GPIOE ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x1000))
+#define GPIOF ((volatile struct stm_gpio_dev *) (GPIO_BASE + 0x1400))
 
 
 /*
  * define interface functions
  */
 
-void stm_gpio_setup(struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_t type, uint32_t pull, uint32_t speed); 
-void stm_gpio_af(struct stm_gpio_dev *dev, uint32_t af); 
+void stm_gpio_setup(volatile struct stm_gpio_dev *dev, uint32_t pins, uint32_t mode, uint32_t type, uint32_t pull, uint32_t speed); 
+void stm_gpio_af(volatile struct stm_gpio_dev *dev, uint32_t pins, uint32_t af);
 
 #endif
