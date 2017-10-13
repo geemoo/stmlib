@@ -7,6 +7,7 @@
 #include "stm32f_gpio.h"
 #include "stm32f_flash.h"
 #include "stm32f_spi.h"
+#include "stm32f_adc.h"
 
 
 #endif

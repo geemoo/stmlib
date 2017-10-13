@@ -27,6 +27,7 @@
 #define RCC_GPIOF ((1 << 30) | (1 << 29) | (1 << 6))
 #define RCC_SPI1 ((2 << 30) | (0 << 29) | (1 << 12))
 #define RCC_SPI2 ((3 << 30) | (0 << 29) | (1 << 14))
+#define RCC_ADC ((2 << 30) | (0 << 29) | (1 << 9))
 
 /// RCC->CR
 #define BP_CR_HSION 0
